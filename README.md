@@ -1,2 +1,2 @@
 # e-commerce-react
-This is the react repo for the WebDev Project
+This is the React repo for the WebDev Project

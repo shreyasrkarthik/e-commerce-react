@@ -1,0 +1,86 @@
+::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+    border: 1px solid black;
+    color: #ababab;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 0;
+    background: #eeeeee;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background: #b0b0b0;
+}
+
+.price-quantity-section {
+    display: block;
+}
+
+.section {
+    margin-top: 10px;
+}
+
+.price-quantity-section .MuiTypography-root {
+    margin: 0 25px 0 0;
+    font-size: 0.9rem;
+}
+
+.product-desc {
+    border: 1px solid #ababab;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.sellers {
+    overflow-x: auto;
+    white-space: nowrap;
+    border: 1px solid #ababab;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.sellers .seller-card {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.product-img {
+    border-radius: 10px;
+}
+
+.reviews {
+    border: 1px solid #ababab;
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.reviews .review-card {
+    margin: 8px 0 8px 0;
+}
+
+.new-review {
+    margin-top: 20px;
+}
+
+.new-review .MuiTextField-root {
+    width: 80%;
+}
+
+.new-review .MuiButton-root {
+    margin: 8px 0 0 12px;
+}
+
+.product-desc-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-edit-input {
+    margin: 10px !important;
+}

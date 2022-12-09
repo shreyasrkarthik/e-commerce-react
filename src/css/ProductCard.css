@@ -1,0 +1,16 @@
+.product-card {
+    height: 300px;
+    width: 380px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.product-card .product-overview {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.product-card .action-btns {
+    margin-top: 20px;
+}

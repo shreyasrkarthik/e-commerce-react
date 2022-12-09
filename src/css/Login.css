@@ -1,0 +1,38 @@
+.login {
+    height: 100%;
+    width: 100%;
+    background-color: bisque;
+}
+
+.login .login-card {
+    position: absolute;
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login .input-flex {
+    display: flex;
+}
+
+.login .radio-group {
+    margin: 20px auto 0 auto;
+}
+
+.login .login-header {
+    padding: 25px 0 0 35px;
+    height: 45px;
+    background-color: #565656;
+    font-size: 20px;
+    color: white;
+    box-shadow: 2px 2px 4px 1px #acacac;
+}
+
+.login .login-input {
+    margin: 15px;
+}
+
+.login .login-btn {
+    margin: 0 auto 20px auto;
+}

@@ -1,0 +1,7 @@
+.MuiCard-root {
+    box-shadow: 2px 2px 6px 2px #ababab !important;
+}
+
+.MuiTypography-caption {
+    margin-right: 15px !important;
+}

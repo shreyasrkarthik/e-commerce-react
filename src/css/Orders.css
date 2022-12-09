@@ -1,0 +1,29 @@
+.order-card {
+    width: 400px;
+    margin: 10px auto 10px auto;
+
+}
+
+.order-flex-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-card-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cart-accordion {
+    width: 500px;
+    margin: 10px 0 10px 0;
+}
+
+.order-btn {
+    margin: 10px 0 10px 0 !important;
+    float: right;
+
+}
