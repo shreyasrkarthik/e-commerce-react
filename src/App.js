@@ -5,6 +5,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 
 import Login from "./components/Login";
 import Home from "./components/Home";
+import Register from "./components/Register";
 
 function App() {
     const [authenticated, setAuthenticated] = useState(false);
@@ -21,6 +22,7 @@ function App() {
         <div className="App">
             <Routes>
                 <Route path="/" element={<Login />} />
+                <Route path="/register" element={<Register />} />
                 <Route path="/home" element={<Home />} />
             </Routes>
         </div>

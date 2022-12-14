@@ -16,25 +16,33 @@ import { useNavigate } from "react-router-dom";
 
 import "../css/Login.css";
 
-const Login = () => {
+const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [addresses, setAddresses] = useState([]);
+    const [phone, setPhone] = useState("");
     const [loginFail, setLoginFail] = useState(false);
     const [userType, setUserType] = useState("shopper");
     const [errorMsg, setErrorMsg] = useState("");
     const navigate = useNavigate();
 
-    const handleLogin = async () => {
+    const handleRegister = async () => {
         if (email && password) {
             console.log("URI", process.env.REACT_APP_API_URL);
             const response = await fetch(
-                `${process.env.REACT_APP_API_URL}user/login`,
+                `${process.env.REACT_APP_API_URL}user/`,
                 {
                     method: "POST",
                     body: JSON.stringify({
-                        email,
-                        password,
-                        userType,
+                        "firstName" : firstName,
+                        "lastName" : lastName,
+                        "email" : email,
+                        "phone" : phone,
+                        "addresses" : addresses,
+                        "password" : password,
+                        "userType" : userType,
                     }),
                     headers: {
                         "Content-Type": "Application/json",
@@ -42,34 +50,54 @@ const Login = () => {
                 }
             );
             const { success } = await response.json();
-            if (success) {
-                window.localStorage.setItem("user", email);
-                window.localStorage.setItem("userType", userType);
-                navigate("/home");
+            if (success!=null) {
+                // window.localStorage.setItem("user", email);
+                // window.localStorage.setItem("userType", userType);
+                console.log(success)
+                navigate("/");
             } else {
                 setLoginFail(true);
-                setErrorMsg("Username or password incorrect");
+                setErrorMsg("Registration failed. Try again!");
             }
         } else {
-            setErrorMsg("Username or password incorrect");
+            setErrorMsg("Valid email and password are required");
             setLoginFail(true);
         }
     };
 
-    const handleRegistration = async () => {
-        navigate("/register");
+    const handleEmailInput = (e) => {
+        if(/\S+@\S+\.\S+/.test(e.target.value)){
+            setEmail(e.target.value)
+        }
     };
-
-    const handleEmailInput = (e) => setEmail(e.target.value);
     const handlePassInput = (e) => setPassword(e.target.value);
+    const handleFirstNameInput = (e) => setFirstName(e.target.value);
+    const handleLastNameInput = (e) => setLastName(e.target.value);
+    const handlePhoneInput = (e) => setPhone(e.target.value);
+    const handleAddressInput = (e) => setAddresses([e.target.value]);
     const handleRadio = (e) => setUserType(e.target.value);
+
 
     return (
         <div className="login">
             <Card className="login-card">
-                <div className="login-header">Login</div>
+                <div className="login-header">Sign Up</div>
                 <CardContent className="input-flex">
                     <div className="input-group">
+                        <div className="login-input">
+                            <TextField
+                                variant="standard"
+                                label="First Name"
+                                onChange={handleFirstNameInput}
+                            />
+                        </div>
+                        <div className="login-input">
+                            <TextField
+                                variant="standard"
+                                label="Last Name"
+                                onChange={handleLastNameInput}
+                            />
+                        </div>
                         <div className="login-input">
                             <TextField
                                 variant="standard"
@@ -82,6 +110,20 @@ const Login = () => {
                                 variant="standard"
                                 label="Password"
                                 onChange={handlePassInput}
+                            />
+                        </div>
+                        <div className="login-input">
+                            <TextField
+                                variant="standard"
+                                label="Phone"
+                                onChange={handlePhoneInput}
+                            />
+                        </div>
+                        <div className="login-input">
+                            <TextField
+                                variant="standard"
+                                label="Address"
+                                onChange={handleAddressInput}
                             />
                         </div>
                     </div>
@@ -99,11 +141,6 @@ const Login = () => {
                                     control={<Radio />}
                                     label="Shopper"
                                 />
-                                <FormControlLabel
-                                    value="admin"
-                                    control={<Radio />}
-                                    label="Admin"
-                                />
                             </RadioGroup>
                         </FormControl>
                     </div>
@@ -112,18 +149,9 @@ const Login = () => {
                     <Button
                         className="login-btn"
                         variant="contained"
-                        onClick={handleLogin}
+                        onClick={handleRegister}
                     >
-                        Login
-                    </Button>
-                </CardActions>
-                <CardActions>
-                    <Button
-                        className="login-btn"
-                        variant="contained"
-                        onClick={handleRegistration}
-                    >
-                        Sign Up
+                        Submit
                     </Button>
                 </CardActions>
             </Card>
@@ -139,4 +167,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
