@@ -205,6 +205,7 @@ const Home = () => {
                     </Paper>
 
                     <div className="right-action-btns">
+
                         <IconButton className="action-btn" onClick={profile}>
                             <AccountCircle/>
                         </IconButton>

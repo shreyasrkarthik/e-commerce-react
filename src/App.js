@@ -18,6 +18,7 @@ function App() {
     //         navigate("/home");
     //     }
     // }, [navigate]);
+
     return (
         <div className="App">
             <Routes>

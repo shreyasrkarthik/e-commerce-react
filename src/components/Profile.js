@@ -1,16 +1,11 @@
 import '../css/Profile.css';
-import {AppBar, Box, Button, ButtonGroup, IconButton, Tab, Tabs, TextField, Toolbar, Typography} from "@mui/material";
+import {AppBar, Box, IconButton, TextField, Toolbar, Typography} from "@mui/material";
 import {Home, Logout} from "@mui/icons-material";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 const Profile = () => {
     const navigate = useNavigate();
-    const buttons = [
-        <Button key="one">One</Button>,
-        <Button key="two">Two</Button>,
-        <Button key="three">Three</Button>,
-    ];
     const [firstName, setFirstName] = useState('Test FirstName');
     const [lastName, setLastName] = useState('Test LastName');
     const [email, setEmail] = useState('testemail@email.com');
@@ -38,11 +33,6 @@ const Profile = () => {
     const phoneNumberChange = (event) => {
         setPhoneNumber(event.target.value);
     };
-    const addressChange = (event) => {
-        console.log(event);
-        setAddress(event.target.value);
-    };
-
     const setCountry = (e) => {
         const newCountry = e.target.value;
         const newAddress = {
