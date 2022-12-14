@@ -1,4 +1,4 @@
-import { Add, Logout, Search, ShoppingCart } from "@mui/icons-material";
+import { Add, Logout, Search, ShoppingCart, AccountCircle } from "@mui/icons-material";
 import Close from "@mui/icons-material/Close";
 import {
     AppBar,
@@ -73,6 +73,10 @@ const Home = () => {
         window.localStorage.removeItem("userType");
         navigate("/");
     };
+
+    const profile = () => {
+        navigate('/profile');
+    }
 
     const deleteProduct = async (id) => {
         const response = await fetch(
@@ -201,6 +205,10 @@ const Home = () => {
                     </Paper>
 
                     <div className="right-action-btns">
+                        <IconButton className="action-btn" onClick={profile}>
+                            <AccountCircle/>
+                        </IconButton>
+
                         <IconButton
                             className="action-btn"
                             onClick={() => setOpenOrders(true)}
