@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Box,
   Button,
   Card,
   CardContent,
@@ -11,7 +10,6 @@ import {
   DialogContentText,
   DialogTitle,
   IconButton,
-  Modal,
   Typography,
 } from "@mui/material";
 import ProductDialog from "./ProductDialog";

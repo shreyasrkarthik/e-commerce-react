@@ -1,12 +1,14 @@
 import {
+  AccountCircle,
   Add,
-  Login,
   LoginRounded,
   Logout,
   Search,
   ShoppingCart,
 } from "@mui/icons-material";
+
 import Close from "@mui/icons-material/Close";
+
 import {
   AppBar,
   Badge,
@@ -17,6 +19,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "./ProductCard";
@@ -41,7 +44,7 @@ const Home = () => {
 
   useEffect(() => {
     console.log("URI", process.env.REACT_APP_API_URL);
-   const defaultReview = {
+    const defaultReview = {
       content: "Good product",
       created: new Date(),
       updated: new Date(),
@@ -57,12 +60,12 @@ const Home = () => {
       try {
         const response = await fetch(`${process.env.REACT_APP_API_URL}product`);
         const data = await response.json();
-      const productsAPI = await fetch(`https://fakestoreapi.com/products`);
+        const productsAPI = await fetch(`https://fakestoreapi.com/products`);
         const dataAPI = await productsAPI.json();
 
         const mappedAPIData = dataAPI.map((data) => ({
           name: data.title,
-        description: data.description,
+          description: data.description,
           price: data.price,
           category: data.category,
           image: data.image,
@@ -74,7 +77,7 @@ const Home = () => {
 
         const finalData = [...mappedAPIData, ...data.products];
 
-    setProducts(finalData);
+        setProducts(finalData);
       } catch (error) {
         // handle error
       }
@@ -120,17 +123,10 @@ const Home = () => {
     navigate("/");
   };
 
-    const profile = () => {
-        navigate('/profile');
-    }
+  const profile = () => {
+    navigate("/profile");
+  };
 
-    const deleteProduct = async (id) => {
-        const response = await fetch(
-            `${process.env.REACT_APP_API_URL}product/${id}`,
-            {
-                method: "DELETE",
-            }
-        );
   const login = () => {
     navigate("/login");
   };
@@ -273,9 +269,9 @@ const Home = () => {
                   </Badge>
                 </IconButton>
 
-                  <IconButton className="action-btn" onClick={profile}>
-                      <AccountCircle/>
-                  </IconButton>
+                <IconButton className="action-btn" onClick={profile}>
+                  <AccountCircle />
+                </IconButton>
                 {window.localStorage.getItem("userType") === "admin" && (
                   <IconButton
                     className="action-btn"
