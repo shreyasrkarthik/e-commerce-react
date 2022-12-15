@@ -41,11 +41,45 @@ const Home = () => {
 
   useEffect(() => {
     console.log("URI", process.env.REACT_APP_API_URL);
-    fetch(`${process.env.REACT_APP_API_URL}product`).then((response) => {
-      response.json().then((data) => {
-        setProducts(data.products);
-      });
-    });
+   const defaultReview = {
+      content: "Good product",
+      created: new Date(),
+      updated: new Date(),
+    };
+
+    const defaultSeller = {
+      companyName: "TATA Company",
+      address: "Mumbai, India, 400001",
+      ratings: 3.9,
+      establishedYear: 2005,
+    };
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}product`);
+        const data = await response.json();
+      const productsAPI = await fetch(`https://fakestoreapi.com/products`);
+        const dataAPI = await productsAPI.json();
+
+        const mappedAPIData = dataAPI.map((data) => ({
+          name: data.title,
+        description: data.description,
+          price: data.price,
+          category: data.category,
+          image: data.image,
+          quantity: data.rating.count,
+          reviews: [defaultReview],
+          sellers: [defaultSeller],
+          source: "thirdparty_api",
+        }));
+
+        const finalData = [...mappedAPIData, ...data.products];
+
+    setProducts(finalData);
+      } catch (error) {
+        // handle error
+      }
+    };
+    fetchData();
   }, []);
 
   useEffect(() => {

@@ -59,26 +59,68 @@ const ProductCard = ({ product, deleteProduct, updateProduct, addToCart }) => {
     deleteProduct(_id);
   };
 
-  return (
+  const truncate = (str) => {
+    return str.length > 25 ? str.substring(0, 20) + "..." : str;
+  };return (
     <div>
       <Card className="product-card" onClick={() => setOpenDialog(true)}>
         <CardMedia
           component="img"
           height="180"
-          image="https://picsum.photos/380/180"
+          image={
+            product.source === "thirdparty_api"
+              ? product.image
+              : "https://picsum.photos/380/180"
+          }
           alt={name}
         />
         <CardContent className="product-overview">
           <div>
-            <Typography gutterBottom variant="h5" component="div">
-              {name}
+            <Typography gutterBottom variant="h5" component="div"
+              style={{ overflow: "hidden", textOverflow: "ellipsis" }}
+            >
+              {truncate(name)}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {formatCategory(category)}
             </Typography>
             <Typography variant="body2" color="text.subtitle">
               ${price}
-            </Typography>
+            </Typography>{product.source === "thirdparty_api" ? (
+              <Typography
+                style={{
+                  color: "red",
+                  float: "left",
+                  backgroundColor: "yellow",
+                  borderRadius: "5px",
+                  padding: "5px",
+                  fontSize: "12px",
+                  fontWeight: "bold",
+                  border: "1px solid red",
+                }}
+                stylevariant="body2"
+                color="text.subtitle"
+              >
+                Source: Third Party Seller
+              </Typography>
+            ) : (
+              <Typography
+                style={{
+                  color: "blue",
+                  float: "left",
+                  backgroundColor: "yellow",
+                  borderRadius: "5px",
+                  padding: "5px",
+                  fontSize: "12px",
+                  fontWeight: "bold",
+                  border: "1px solid blue",
+                }}
+                variant="body2"
+                color="text.subtitle"
+              >
+                Source: Our Store
+              </Typography>
+            )}
           </div>
           <div className="action-btns">
             {window.localStorage.getItem("userType") === "admin" ? (
