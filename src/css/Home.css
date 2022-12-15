@@ -16,13 +16,40 @@
     overflow-y: auto;
 }
 
+@media (max-width: 1200px) {
+  /* styles for screens less than 1200px wide */
+  .home .catalogue {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+  }
+}
+
 .home .search-bar {
     margin-left: 250px;
+}
+
+@media (max-width: 750px) {
+  /* styles for screens less than 750px wide */
+  .home .search-bar {
+    margin-left: 0;
+  }
 }
 
 .home .right-action-btns {
     position: absolute;
     right: 15px;
+}
+
+@media (max-width: 600px) {
+  /* styles for screens less than 600px wide */
+  .home .right-action-btns {
+    position: relative;
+    right: 0;
+  }
 }
 
 .home .right-action-btns .action-btn {

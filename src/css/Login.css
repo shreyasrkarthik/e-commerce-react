@@ -12,6 +12,16 @@
     transform: translate(-50%, -50%);
 }
 
+@media (max-width: 500px) {
+  /* styles for screens less than 500px wide */
+  .login .login-card {
+    width: 100%;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+}
+
 .login .input-flex {
     display: flex;
 }
