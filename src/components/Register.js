@@ -21,18 +21,18 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [addresses, setAddresses] = useState([]);
     const [phone, setPhone] = useState("");
     const [loginFail, setLoginFail] = useState(false);
-    const [userType, setUserType] = useState("shopper");
+    const [userType, setUserType] = useState("SHOPPER");
     const [errorMsg, setErrorMsg] = useState("");
     const navigate = useNavigate();
 
     const handleRegister = async () => {
-        if (email && password) {
+        if (email && password && firstName && lastName && phone) {
             console.log("URI", process.env.REACT_APP_API_URL);
+            console.log()
             const response = await fetch(
-                `${process.env.REACT_APP_API_URL}user/`,
+                `${process.env.REACT_APP_API_URL}user/create`,
                 {
                     method: "POST",
                     body: JSON.stringify({
@@ -40,7 +40,6 @@ const Register = () => {
                         "lastName" : lastName,
                         "email" : email,
                         "phone" : phone,
-                        "addresses" : addresses,
                         "password" : password,
                         "userType" : userType,
                     }),
@@ -49,12 +48,12 @@ const Register = () => {
                     },
                 }
             );
-            const { success } = await response.json();
+            const success = await response.json();
             if (success!=null) {
-                // window.localStorage.setItem("user", email);
-                // window.localStorage.setItem("userType", userType);
+                window.localStorage.setItem("user", email);
+                window.localStorage.setItem("userType", userType);
                 console.log(success)
-                navigate("/");
+                navigate("/home");
             } else {
                 setLoginFail(true);
                 setErrorMsg("Registration failed. Try again!");
@@ -74,7 +73,6 @@ const Register = () => {
     const handleFirstNameInput = (e) => setFirstName(e.target.value);
     const handleLastNameInput = (e) => setLastName(e.target.value);
     const handlePhoneInput = (e) => setPhone(e.target.value);
-    const handleAddressInput = (e) => setAddresses([e.target.value]);
     const handleRadio = (e) => setUserType(e.target.value);
 
 
@@ -119,25 +117,18 @@ const Register = () => {
                                 onChange={handlePhoneInput}
                             />
                         </div>
-                        <div className="login-input">
-                            <TextField
-                                variant="standard"
-                                label="Address"
-                                onChange={handleAddressInput}
-                            />
-                        </div>
                     </div>
                     <div className="radio-group">
                         <FormControl component="fieldset">
                             <FormLabel component="legend">Role</FormLabel>
                             <RadioGroup
                                 aria-label="role"
-                                defaultValue="shopper"
+                                defaultValue="SHOPPER"
                                 name="role-radio-buttons"
                                 onChange={handleRadio}
                             >
                                 <FormControlLabel
-                                    value="shopper"
+                                    value="SHOPPER"
                                     control={<Radio />}
                                     label="Shopper"
                                 />
