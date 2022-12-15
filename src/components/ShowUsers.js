@@ -1,4 +1,10 @@
-import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  IconButton,
+  Toolbar,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Home } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
@@ -26,9 +32,11 @@ const ShowUsers = () => {
         <Toolbar>
           <Typography variant="body1">E-Commerce website</Typography>
           <div className="right-action-btns">
-            <IconButton className="action-btn" onClick={home}>
-              <Home />
-            </IconButton>
+            <Tooltip title={"Home"}>
+              <IconButton className="action-btn" onClick={home}>
+                <Home />
+              </IconButton>
+            </Tooltip>
           </div>
         </Toolbar>
       </AppBar>

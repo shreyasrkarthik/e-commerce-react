@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
 
 import "../css/ProductDialog.css";

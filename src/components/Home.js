@@ -57,6 +57,7 @@ const Home = () => {
       ratings: 3.9,
       establishedYear: 2005,
     };
+
     const fetchData = async () => {
       try {
         const response = await fetch(`${process.env.REACT_APP_API_URL}product`);
@@ -235,7 +236,7 @@ const Home = () => {
     <div className="home">
       <AppBar>
         <Toolbar>
-          <Typography variant="body1">E-Commerce website</Typography>
+          <Typography variant="body1">Dev E-Commerce</Typography>
           <Paper className="search-bar">
             <InputBase
               sx={{ ml: 1, flex: 1, width: "500px" }}
@@ -264,23 +265,29 @@ const Home = () => {
           </Paper>
 
           <div className="right-action-btns">
-            <IconButton className="action-btn" onClick={showUsers}>
-              <PeopleAlt />
-            </IconButton>
+            <Tooltip title={"All Users"}>
+              <IconButton className="action-btn" onClick={showUsers}>
+                <PeopleAlt />
+              </IconButton>
+            </Tooltip>
             {window.localStorage.getItem("userType") != null ? (
               <>
-                <IconButton
-                  className="action-btn"
-                  onClick={() => setOpenOrders(true)}
-                >
-                  <Badge badgeContent={orders.size} color="secondary">
-                    <ShoppingCart />
-                  </Badge>
-                </IconButton>
+                <Tooltip title={"Cart/Orders"}>
+                  <IconButton
+                    className="action-btn"
+                    onClick={() => setOpenOrders(true)}
+                  >
+                    <Badge badgeContent={orders.size} color="secondary">
+                      <ShoppingCart />
+                    </Badge>
+                  </IconButton>
+                </Tooltip>
 
-                <IconButton className="action-btn" onClick={profile}>
-                  <AccountCircle />
-                </IconButton>
+                <Tooltip title={"Profile"}>
+                  <IconButton className="action-btn" onClick={profile}>
+                    <AccountCircle />
+                  </IconButton>
+                </Tooltip>
                 {window.localStorage.getItem("userType") === "admin" && (
                   <IconButton
                     className="action-btn"

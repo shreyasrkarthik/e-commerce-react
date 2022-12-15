@@ -10,6 +10,7 @@ import {
   Snackbar,
   TextField,
   Toolbar,
+  Tooltip,
   Typography,
 } from "@mui/material";
 
@@ -187,17 +188,22 @@ const Profile = () => {
             )}
 
             <div>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                color="inherit"
-                onClick={handleClickHome}
-              >
-                <Home />
-              </IconButton>
-              <IconButton className="action-btn" onClick={logout}>
-                <Logout />
-              </IconButton>
+              <Tooltip title={"Home"}>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  color="inherit"
+                  onClick={handleClickHome}
+                >
+                  <Home />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title={"Logout"}>
+                <IconButton className="action-btn" onClick={logout}>
+                  <Logout />
+                </IconButton>
+              </Tooltip>
             </div>
           </Toolbar>
         </AppBar>

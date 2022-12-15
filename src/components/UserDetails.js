@@ -1,20 +1,5 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  IconButton,
-  Paper,
-  Typography,
-} from "@mui/material";
-import { AddShoppingCart, Delete } from "@mui/icons-material";
-import ProductDialog from "./ProductDialog";
-import React, { useEffect, useState } from "react";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import React, { useState } from "react";
 import UserPopUp from "./UserPopUp";
 
 const UserDetails = (props) => {
@@ -44,7 +29,7 @@ const UserDetails = (props) => {
               <Typography gutterBottom variant="h5" component="div">
                 First Name: {firstName}
               </Typography>
-              {lastName != "na" ? (
+              {lastName !== "na" ? (
                 <Typography gutterBottom variant="h6" component="div">
                   Last Name: {lastName}
                 </Typography>
