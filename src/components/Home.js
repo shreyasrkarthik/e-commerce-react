@@ -284,7 +284,7 @@ const Home = () => {
     <div className="home">
       <AppBar>
         <Toolbar>
-          <Typography variant="body1">Dev E-Commerce</Typography>
+          <Typography variant="body1" fontSize={30}>Dev E-Commerce</Typography>
           <Paper className="search-bar">
             <InputBase
               sx={{ ml: 1, flex: 1, width: "500px" }}
