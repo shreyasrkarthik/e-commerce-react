@@ -122,7 +122,7 @@ const Profile = () => {
 
   console.log("UserData", user);
 
-  const saveUserDetails = async (userId) => {
+  const saveUserDetails = async () => {
     console.log("Trying to save data to user");
     console.log(user);
     setOpen(true);
@@ -379,6 +379,7 @@ const Profile = () => {
             vertical: "bottom",
             horizontal: "center",
           }}
+          autoHideDuration={2000}
           TransitionComponent={Slide}
         >
           Your changes have been saved!

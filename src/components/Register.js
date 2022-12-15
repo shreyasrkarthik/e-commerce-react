@@ -10,6 +10,9 @@ import {
   FormControlLabel,
   Radio,
   Button,
+  Toolbar,
+  Typography,
+  AppBar,
 } from "@mui/material";
 import ErrorSnackbar from "./ErrorSnackbar";
 import { useNavigate } from "react-router-dom";
@@ -83,6 +86,17 @@ const Register = () => {
 
   return (
     <div className="login">
+      <AppBar>
+        <Toolbar style={{ textAlign: "center" }}>
+          <Typography
+            variant="body1"
+            style={{ textAlign: "center", float: "right" }}
+            fontSize={30}
+          >
+            Dev E-Commerce
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <Card className="login-card">
         <div className="login-header">Sign Up</div>
         <CardContent className="input-flex">
