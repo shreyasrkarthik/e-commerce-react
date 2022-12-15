@@ -3,6 +3,8 @@
   width: 380px;
   margin: 5px;
   cursor: pointer;
+  box-shadow: 1px 1px 1px 1px #ccc;
+  border-radius: 5px;
 }
 
 @media (max-width: 380px) {
@@ -16,8 +18,26 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  padding: 15px;
 }
 
 .product-card .action-btns {
   margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-card .btn {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 1px 1px 1px #ccc;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.product-card .btn:hover {
+  background-color: #333;
+  color: white;
 }

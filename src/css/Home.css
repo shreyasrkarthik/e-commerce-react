@@ -1,7 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #ecf0f1;
+    --text-color: #333;
+}
+
+.App {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
 .home {
     height: 100%;
     width: 100%;
-    background-color: bisque;
+    background-color: var(--primary-color);
 }
 
 .home .catalogue {
@@ -14,69 +38,65 @@
     transform: translate(-50%, -50%);
     flex-wrap: wrap;
     overflow-y: auto;
-}
 
-@media (max-width: 1200px) {
-  /* styles for screens less than 1200px wide */
-  .home .catalogue {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    left: 0;
-    top: 0;
-    transform: none;
-  }
+    @media (max-width: 1200px) {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+    }
 }
 
 .home .search-bar {
     margin-left: 250px;
-}
 
-@media (max-width: 750px) {
-  /* styles for screens less than 750px wide */
-  .home .search-bar {
-    margin-left: 0;
-  }
+    @media (max-width: 750px) {
+        margin-left: 0;
+    }
 }
 
 .home .right-action-btns {
     position: absolute;
     right: 15px;
+
+    @media (max-width: 600px) {
+        position: relative;
+        right: 0;
+    }
 }
 
-@media (max-width: 600px) {
-  /* styles for screens less than 600px wide */
-  .home .right-action-btns {
-    position: relative;
-    right: 0;
+.home .action-btn {
+    color: white;
+    margin: 0 5px 0 5px;
+
+  @media (max-width: 600px) {
+      position: relative;
+      right: 0;
   }
 }
 
-.home .right-action-btns .action-btn {
-    color: white;
-    margin: 0 5px 0 5px;
-}
+.create-product-dialog 
+    .MuiDialogContent-root {
+        overflow-x: hidden;
+    }
 
-.create-product-dialog .MuiDialogContent-root {
-    overflow-x: hidden;
-}
+    .create-product-input {
+        margin: 5px !important;
+    }
 
-.create-product-dialog .create-product-input {
-    margin: 5px !important;
-}
+    .create-product-btn {
+        margin: 35px 5px 0 5px;
+        float: right;
+    }
+    .add-product-icon {
+          margin-right: 15px;
+      }
 
-.create-product-dialog .create-product-btn {
-    margin: 35px 5px 0 5px;
-    float: right;
-}
-
-.create-product-dialog .create-product-btn .add-product-icon {
-    margin-right: 15px;
-}
-
-.create-product-dialog .section {
-    border: 1px solid #ababab;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 5px 0 10px 0;
-}
+    .section {
+        border: 1px solid #ababab;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 5px 0 10px 0;
+    }

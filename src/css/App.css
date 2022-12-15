@@ -1,16 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #ecf0f1;
+}
+
 .App {
-    font-family: 'Loto', sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    width: 100vw;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--secondary-color);
+
+  
+}
+
+h1 {
+  font-size: 36px;
+  color: var(--primary-color);
 }
 
 @media (max-width: 600px) {
-  .App {
-    font-size: 18px;
-  }
+.App {
+  font-size: 18px;
 }
+}
+
 
