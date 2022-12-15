@@ -14,6 +14,7 @@ import {
   InputBase,
   Paper,
   Toolbar,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import React, { useState, useEffect, useCallback } from "react";
@@ -234,14 +235,18 @@ const Home = () => {
                     <Add />
                   </IconButton>
                 )}
-                <IconButton className="action-btn" onClick={logout}>
-                  <Logout />
-                </IconButton>
+                <Tooltip title={"Logout"}>
+                  <IconButton className="action-btn" onClick={logout}>
+                    <Logout />
+                  </IconButton>
+                </Tooltip>
               </div>
             ) : (
-              <IconButton className="action-btn" onClick={login}>
-                <LoginRounded />
-              </IconButton>
+              <Tooltip title={"Login"}>
+                <IconButton className="action-btn" onClick={login}>
+                  <LoginRounded />
+                </IconButton>
+              </Tooltip>
             )}
           </div>
         </Toolbar>
