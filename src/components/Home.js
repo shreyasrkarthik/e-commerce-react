@@ -17,6 +17,7 @@ import ErrorSnackbar from "./ErrorSnackbar";
 import "../css/Home.css";
 import CreateProduct from "./CreateProduct";
 import Orders from "./Cart";
+const mongoose = require("mongoose");
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -55,6 +56,7 @@ const Home = () => {
         const dataAPI = await productsAPI.json();
 
         const mappedAPIData = dataAPI.map((data) => ({
+          _id: mongoose.Types.ObjectId(),
           name: data.title,
           description: data.description,
           price: data.price,
@@ -77,15 +79,21 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    fetch(
-      `${process.env.REACT_APP_API_URL}user/${window.localStorage.getItem(
-        "user"
-      )}/orders`
-    ).then((res) =>
-      res.json().then((data) => {
-        setPastOrders(data.orders);
-      })
-    );
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}user/${window.localStorage.getItem(
+            "user"
+          )}/orders`
+        );
+        const data = await response.json();
+
+        setPastOrders([...data.orders]);
+      } catch (error) {
+        // handle error
+      }
+    };
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -164,29 +172,60 @@ const Home = () => {
   );
 
   const orderNow = async () => {
-    let res = await fetch(`${process.env.REACT_APP_API_URL}order/bulk`, {
-      method: "POST",
-      body: JSON.stringify({
+    try {
+      const body = JSON.stringify({
         products: Array.from(orders).map((order) => order._id),
         email: window.localStorage.getItem("user"),
         discount: 0,
-      }),
-      headers: {
+      });
+      const headers = {
         "Content-Type": "Application/json",
-      },
-    });
-    let data = await res.json();
+      };
 
-    res = await fetch(
-      `${process.env.REACT_APP_API_URL}user/${window.localStorage.getItem(
-        "user"
-      )}/orders`
-    );
+      let res = await fetch(`${process.env.REACT_APP_API_URL}order/bulk`, {
+        method: "POST",
+        body,
+        headers,
+      });
 
-    data = await res.json();
+      // check if post is successful
+      if (!res.ok) {
+        throw new Error("Something went wrong");
+      } else {
+        console.log("Order placed successfully");
+      }
 
-    setOrders(new Set());
-    setPastOrders(data.orders);
+      let data = await res.json();
+
+      console.log("data", data);
+      let temp_data = data;
+
+      res = await fetch(
+        `${process.env.REACT_APP_API_URL}user/${window.localStorage.getItem(
+          "user"
+        )}/orders`
+      );
+
+      data = await res.json();
+
+      const name = orders.values().next().value.name;
+      const price = orders.values().next().value.price;
+
+      temp_data.orders = [
+        {
+          ...temp_data.orders[0],
+          productName: name,
+          total: price,
+        },
+      ];
+
+      data.orders = [...data.orders, ...temp_data.orders];
+
+      setOrders(new Set());
+      setPastOrders(data.orders);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const deleteOrder = async (orderId) => {
