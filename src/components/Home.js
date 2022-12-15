@@ -20,7 +20,6 @@ import Orders from "./Cart";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
-  //   const [productsAPI, setAPIproducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [error, setError] = useState(false);
@@ -35,47 +34,47 @@ const Home = () => {
   useEffect(() => {
     console.log("URI", process.env.REACT_APP_API_URL);
 
-    const dataSet = async () => {
+    const defaultReview = {
+      content: "Good product",
+      created: new Date(),
+      updated: new Date(),
+    };
+
+    const defaultSeller = {
+      companyName: "TATA Company",
+      address: "Mumbai, India, 400001",
+      ratings: 3.9,
+      establishedYear: 2005,
+    };
+    const fetchData = async () => {
       try {
-        const productsBackend = await fetch(
-          `${process.env.REACT_APP_API_URL}product`
-        );
+        const response = await fetch(`${process.env.REACT_APP_API_URL}product`);
+        const data = await response.json();
+
         const productsAPI = await fetch(`https://fakestoreapi.com/products`);
-        setProducts(productsBackend.data);
+        const dataAPI = await productsAPI.json();
 
-        const mappedAPIData = productsAPI.data.map((data) => ({
-          seller: "test",
-          title: data.heading,
-
-          source: "thirdparty",
+        const mappedAPIData = dataAPI.map((data) => ({
+          name: data.title,
+          description: data.description,
+          price: data.price,
+          category: data.category,
+          image: data.image,
+          quantity: data.rating.count,
+          reviews: [defaultReview],
+          sellers: [defaultSeller],
+          source: "thirdparty_api",
         }));
 
-        console.log(mappedAPIData);
+        const finalData = [...mappedAPIData, ...data.products];
 
-        // productsAPI -> properties diffrent
-        // productsBackend -> different
-        // concatenate both results and setProducts
-        // identifier can be added to differentiate source (source: 'fakestore')
-
-        // {
-        //   ... data
-        //   source: 'fakestore'
-        // }
-      } catch (err) {
-        console.log(err);
+        setProducts(finalData);
+      } catch (error) {
+        // handle error
       }
     };
-    dataSet();
+    fetchData();
   }, []);
-
-  //   useEffect(() => {
-  //     console.log("URI", process.env.REACT_APP_API_URL);
-  //     fetch(`https://fakestoreapi.com/products`).then((response) => {
-  //       response.json().then((data) => {
-  //         setAPIproducts(data.products);
-  //       });
-  //     });
-  //   }, []);
 
   useEffect(() => {
     fetch(
