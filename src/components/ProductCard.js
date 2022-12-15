@@ -61,7 +61,8 @@ const ProductCard = ({ product, deleteProduct, updateProduct, addToCart }) => {
 
   const truncate = (str) => {
     return str.length > 25 ? str.substring(0, 20) + "..." : str;
-  };return (
+  };
+  return (
     <div>
       <Card className="product-card" onClick={() => setOpenDialog(true)}>
         <CardMedia
@@ -76,7 +77,10 @@ const ProductCard = ({ product, deleteProduct, updateProduct, addToCart }) => {
         />
         <CardContent className="product-overview">
           <div>
-            <Typography gutterBottom variant="h5" component="div"
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
               style={{ overflow: "hidden", textOverflow: "ellipsis" }}
             >
               {truncate(name)}
@@ -86,37 +90,40 @@ const ProductCard = ({ product, deleteProduct, updateProduct, addToCart }) => {
             </Typography>
             <Typography variant="body2" color="text.subtitle">
               ${price}
-            </Typography>{product.source === "thirdparty_api" ? (
+            </Typography>
+            {product.source === "thirdparty_api" ? (
               <Typography
                 style={{
-                  color: "red",
-                  float: "left",
-                  backgroundColor: "yellow",
+                  color: "black",
+                  float: "right",
+                  alignItems: "end",
+                  backgroundColor: "bisque",
                   borderRadius: "5px",
-                  padding: "5px",
-                  fontSize: "12px",
-                  fontWeight: "bold",
-                  border: "1px solid red",
+                  padding: "1px",
+                  fontSize: "10px",
+                  textAlign: "center",
+                  border: "1px solid blue",
                 }}
-                stylevariant="body2"
-                color="text.subtitle"
+                variant="body2"
+                color="text.secondary"
               >
                 Source: Third Party Seller
               </Typography>
             ) : (
               <Typography
                 style={{
-                  color: "blue",
-                  float: "left",
-                  backgroundColor: "yellow",
+                  color: "black",
+                  float: "right",
+                  alignItems: "end",
+                  backgroundColor: "bisque",
                   borderRadius: "5px",
-                  padding: "5px",
-                  fontSize: "12px",
-                  fontWeight: "bold",
-                  border: "1px solid blue",
+                  padding: "1px",
+                  fontSize: "10px",
+                  textAlign: "right",
+                  border: "1px solid red",
                 }}
                 variant="body2"
-                color="text.subtitle"
+                color="text.secondary"
               >
                 Source: Our Store
               </Typography>
