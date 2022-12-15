@@ -28,6 +28,14 @@
     font-size: 0.9rem;
 }
 
+@media (max-width: 360px) {
+  /* styles for screens less than 360px wide */
+  .price-quantity-section .MuiTypography-root {
+    margin: 0 10px 0 0;
+    font-size: 0.8rem;
+  }
+}
+
 .product-desc {
     border: 1px solid #ababab;
     border-radius: 5px;

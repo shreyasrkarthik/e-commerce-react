@@ -5,6 +5,13 @@
   cursor: pointer;
 }
 
+@media (max-width: 380px) {
+  /* styles for screens less than 380px wide */
+  .product-card {
+    width: 100%;
+  }
+}
+
 .product-card .product-overview {
   display: flex;
   flex-direction: row;

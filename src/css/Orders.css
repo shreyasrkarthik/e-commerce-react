@@ -1,7 +1,13 @@
 .order-card {
     width: 400px;
     margin: 10px auto 10px auto;
+}
 
+@media (max-width: 400px) {
+  /* styles for screens less than 400px wide */
+  .order-card {
+    width: 100%;
+  }
 }
 
 .order-flex-box {
@@ -22,8 +28,14 @@
     margin: 10px 0 10px 0;
 }
 
+@media (max-width: 500px) {
+  /* styles for screens less than 500px wide */
+  .cart-accordion {
+    width: 100%;
+  }
+}
+
 .order-btn {
     margin: 10px 0 10px 0 !important;
     float: right;
-
 }
