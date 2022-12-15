@@ -3,6 +3,7 @@ import {
   Login,
   LoginRounded,
   Logout,
+  PeopleAlt,
   Search,
   ShoppingCart,
 } from "@mui/icons-material";
@@ -122,6 +123,11 @@ const Home = () => {
 
   const login = () => {
     navigate("/login");
+  };
+
+  const showUsers = () => {
+    navigate("/users");
+    console.log("test");
   };
 
   const deleteProduct = async (id) => {
@@ -251,8 +257,11 @@ const Home = () => {
           </Paper>
 
           <div className="right-action-btns">
+            <IconButton className="action-btn" onClick={showUsers}>
+              <PeopleAlt />
+            </IconButton>
             {window.localStorage.getItem("userType") != null ? (
-              <div>
+              <>
                 <IconButton
                   className="action-btn"
                   onClick={() => setOpenOrders(true)}
@@ -274,7 +283,7 @@ const Home = () => {
                     <Logout />
                   </IconButton>
                 </Tooltip>
-              </div>
+              </>
             ) : (
               <Tooltip title={"Login"}>
                 <IconButton className="action-btn" onClick={login}>

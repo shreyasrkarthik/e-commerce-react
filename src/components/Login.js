@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -23,6 +23,12 @@ const Login = () => {
   const [userType, setUserType] = useState("shopper");
   const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (window.localStorage.getItem("user")) {
+      navigate("/home");
+    }
+  }, [navigate]);
 
   const handleLogin = async () => {
     if (email && password) {
