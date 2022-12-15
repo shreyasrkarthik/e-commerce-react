@@ -6,9 +6,10 @@
 
 .home .catalogue {
     display: flex;
-    height: 600px;
-    width: 1200px;
+    height: 90%;
+    width: 100%;
     position: absolute;
+    padding-left: 35px;
     left: 50%;
     top: 55%;
     transform: translate(-50%, -50%);
@@ -28,10 +29,11 @@
   }
 }
 
+@media (max-width: 750px) {
 .home .search-bar {
     margin-left: 250px;
 }
-
+}
 @media (max-width: 750px) {
   /* styles for screens less than 750px wide */
   .home .search-bar {

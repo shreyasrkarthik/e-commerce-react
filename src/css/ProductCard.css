@@ -1,7 +1,8 @@
 .product-card {
-  height: 300px;
-  width: 380px;
+  height: 400px;
+  width: 480px;
   margin: 5px;
+  padding-bottom: 20px;
   cursor: pointer;
 }
 
