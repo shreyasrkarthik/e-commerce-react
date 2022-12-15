@@ -1,6 +1,6 @@
 import {
   AccountCircle,
-  Add,
+  Add, AddCircleOutline,
   LoginRounded,
   Logout,
   PeopleAlt,
@@ -150,6 +150,10 @@ const Home = () => {
     navigate("/login");
   };
 
+  const addProduct = () => {
+    navigate("/add-product");
+  };
+
   const showUsers = () => {
     navigate("/users");
     console.log("test");
@@ -284,7 +288,7 @@ const Home = () => {
     <div className="home">
       <AppBar>
         <Toolbar>
-          <Typography variant="body1" fontSize={30}>Dev E-Commerce</Typography>
+          <Typography variant="body1" fontSize={25} paddingRight={15}>Dev E-Commerce</Typography>
           <Paper className="search-bar">
             <InputBase
               sx={{ ml: 1, flex: 1, width: "500px" }}
@@ -357,7 +361,18 @@ const Home = () => {
                 </IconButton>
               </Tooltip>
             )}
+            {window.localStorage.getItem("userType") === "seller"?(
+                <Tooltip title={"Add New Product"}>
+                  <IconButton style={{color: "white"}} onClick={addProduct}>
+                    <AddCircleOutline color="white"/>
+                  </IconButton>
+                </Tooltip>
+            ):(
+                <>
+                </>
+            )}
           </div>
+
         </Toolbar>
       </AppBar>
       <div className="catalogue">

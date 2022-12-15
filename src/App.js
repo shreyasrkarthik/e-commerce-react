@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Register from "./components/Register";
 import ShowUsers from "./components/ShowUsers";
 import Profile from "./components/Profile.js";
+import AddProduct from "./components/AddProduct";
 
 function App() {
   return (
@@ -16,8 +17,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
-          <Route path="/users" element={<ShowUsers />} />
-
+        <Route path="/users" element={<ShowUsers />} />
+        <Route path="/add-product" element={<AddProduct />} />
       </Routes>
     </div>
   );

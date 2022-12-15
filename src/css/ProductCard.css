@@ -13,6 +13,12 @@
   }
 }
 
+.right-action-btns{
+  position:absolute;
+  color: white;
+  right:15px
+}
+
 .product-card .product-overview {
   display: flex;
   flex-direction: row;

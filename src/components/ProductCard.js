@@ -132,7 +132,7 @@ const ProductCard = ({ product, deleteProduct, updateProduct, addToCart }) => {
               <IconButton color="error" onClick={handleDelete}>
                 <Delete />
               </IconButton>
-            ) : (
+            ) : window.localStorage.getItem("userType") === "shopper" ? (
               <IconButton
                 color="info"
                 onClick={(e) => {
@@ -148,6 +148,9 @@ const ProductCard = ({ product, deleteProduct, updateProduct, addToCart }) => {
               >
                 <AddShoppingCart />
               </IconButton>
+            ): (
+                <IconButton>
+                </IconButton>
             )}
           </div>
         </CardContent>
@@ -161,7 +164,7 @@ const ProductCard = ({ product, deleteProduct, updateProduct, addToCart }) => {
         <DialogTitle id="alert-dialog-title">{"Login/Sign-Up"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            You have to login/Sign-Up to add this product to the cart.
+            You can't add product to the cart.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
