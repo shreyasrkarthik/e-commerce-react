@@ -120,6 +120,17 @@ const Home = () => {
     navigate("/");
   };
 
+    const profile = () => {
+        navigate('/profile');
+    }
+
+    const deleteProduct = async (id) => {
+        const response = await fetch(
+            `${process.env.REACT_APP_API_URL}product/${id}`,
+            {
+                method: "DELETE",
+            }
+        );
   const login = () => {
     navigate("/login");
   };
@@ -261,6 +272,10 @@ const Home = () => {
                     <ShoppingCart />
                   </Badge>
                 </IconButton>
+
+                  <IconButton className="action-btn" onClick={profile}>
+                      <AccountCircle/>
+                  </IconButton>
                 {window.localStorage.getItem("userType") === "admin" && (
                   <IconButton
                     className="action-btn"

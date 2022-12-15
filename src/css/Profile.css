@@ -1,0 +1,12 @@
+
+.profile {
+    height: 100%;
+    width: 100%;
+    background-color: bisque;
+    text-align: center;
+}
+
+.profile .action-btn {
+    color: white;
+    margin: 0 5px 0 5px;
+}
